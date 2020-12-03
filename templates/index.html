@@ -80,6 +80,12 @@
            font-weight: bold;
            text-align: center;
       }
+       .container .items_group_list_instance p img{
+           float: left;
+           height: 14px;
+           width: 14px;
+           margin: 3px 0;
+       }
        .container .bottom_group {
            height: 50px;
            width: 100%;
@@ -101,9 +107,32 @@
                     <a href="#">查看更多</a>
                 </div>
                 <div class="items_group_list_instance">
-                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606997739657&di=e6e96b6f44050b9ba889d4f0467c83dd&imgtype=0&src=http%3A%2F%2Fp3.itc.cn%2Fq_70%2Fimages03%2F20201119%2F83c3b42e861742d0bbd9ec2cd1e66f8b.png" alt="p1">
+                    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1607003682610&di=054055a824a4d6116058e05eed9df945&imgtype=0&src=http%3A%2F%2Fcdn.yyfeiye.com%2Fuploads%2Fvod%2F2020-11-23%2Fb6120c05e5350b03210842b94a6282f6.jpg" alt="p1">
                     <p>疯狂原始人2</p>
-                    <p>8.2</p>
+                    <p>
+                        {% set num = 8.2 %}
+                        {% set num_star_full = (num / 2) | int %}
+                        {% set num_star_half = (num | int) % 2 | int %}
+                        {% if num_star_half == 1 %}
+                            {% set num_star_half_true = 1 %}
+                        {% else %}
+                            {% set num_star_half_true = 0 %}
+                        {% endif %}
+                    
+                        {% for item in range(num_star_full) %}
+                            <img src="{{ url_for('static', filename='images/640.png') }}" alt="fill">
+                        {% endfor %}
+                        {% if num_star_half_true == 1 %}
+                            <img src="{{ url_for('static', filename='images/642.png') }}" alt="half">
+                        {% else %}
+                            <img src="{{ url_for('static', filename='images/641.png') }}" alt="none">
+                        {% endif %}
+                        
+                        {% for item in range((5 - num_star_full - 1)) %}
+                            <img src="{{ url_for('static', filename='images/641.png') }}" alt="none ">
+                        {% endfor %}
+                        {{ num }}
+                    </p>
                 </div>
             </div>
         </div>
