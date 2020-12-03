@@ -12,12 +12,51 @@
             height: 750px;
             margin: 50px auto 0;
             border: solid 1px gray;
+            background-color: #F0FFF0;
+        }
+        .container.index {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            /*font-family: Consolas;*/
+            line-height: 50px;
+            color: white;
+            background-color: #41be57;
+        }
+        .container.search_group {
+            height: 50px;
+            width: 100%;
+        }
+        .container.search_group.input {
+            border: 1px solid grey;
+            padding: 0;
+            height: 28px;
+            width: 368px;
+            margin: 10px 5px;
+            border-radius: 9px;
+            background: white url("{{ url_for('static', filename="images/search.png") }}") no-repeat center center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        Test
+        <div class="index">
+            首页
+        </div>
+        <div class="search_group">
+            <input type="text" id="search_g">
+        </div>
+        <div class="items_group">
+            <div class="items_group_list">
+                <div class="items_group_list_title">
+                    <span>影院热映</span>
+                    <a href="#">查看更多</a>
+                </div>
+            </div>
+                <div class="items_group_list_instance"></div>
+        </div>
+        <div class="bottom_group">底部导航</div>
+
     </div>
 </body>
 </html>
